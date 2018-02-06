@@ -1,0 +1,24 @@
+% simulation d'un GARCH(1,1)
+function eps = garch_sim(n, omega, alpha, beta)
+eta = randn(n, 1);
+ht=zeros(n,1);
+eps=ht;
+eps(1) = sqrt(omega)*eta(1);
+for t = 2:n 
+    ht(t) = omega+alpha*eps(t-1).^2+beta*ht(t-1);
+    eps(t) = sqrt(ht(t))*eta(t);
+end
+
+% estime un GARCH(1,1) avec nlminb omega0=1 alpha0=0.05 beta=0.7 eps0=sim
+
+function qml = objf3(x, eps)    
+         omega = x(1);
+         alpha = x(2);
+         beta = x(3);
+         n = length(eps);
+         sigma2=as.numeric(n);
+         sigma2(1) =omega;
+         for t = 2:n
+            sigma2(t) = omega+alpha*eps(t-1).^2+beta*sigma2(t-1)
+         end
+         qml = mean(log(sigma2(2:n))+eps(2:n).^2/sigma2(2:n))
