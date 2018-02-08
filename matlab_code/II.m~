@@ -22,14 +22,14 @@ for jter = 1:length(njter)
                 disp([i,ok,pval]);
             end
             pval_matrix(i,j)=pval;
-            para_omega(i,j)=para(1);
-            para_alpha(i,j)=para(2);
-            para_beta(i,j)=para(3);
+            para_omega(i,j)=resestimgarch11$coef[1]
+            para_alpha(i,j)=resestimgarch11$coef[2]
+            para_beta(i,j)=resestimgarch11$coef[3]
         end
     end
-    freq_rej=zeros(niter,1);
+    freq.rej=rep(0,niter)
     for i = 1:niter 
-        freq_rej(i)=100*length(find(pval_matrix(i,:)< 0.05))/nrep;
+        freq.rej[i]=100*length(which(pval[i,]< 0.05))/nrep
     end
-    disp(freq_rej);
+    print(freq.rej)
 end

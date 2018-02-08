@@ -1,4 +1,4 @@
-% simulation d'un GARCH(1,1)
+% simulation of GARCH(1,1)
 function eps = garch_sim(n, omega, alpha, beta)
 eta = randn(n, 1);
 ht=zeros(n,1);
