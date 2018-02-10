@@ -1,4 +1,5 @@
 % Main Programme to Get Table IV.
+clear
 omega0=0.1;
 beta0=0.8;
 df=7;

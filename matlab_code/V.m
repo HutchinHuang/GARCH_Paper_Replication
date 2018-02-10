@@ -1,5 +1,6 @@
 % Main Programme to Get Table V
 % Almost the same as that to get Table IV, except for the test function.
+clear
 omega0=0.1;
 beta0=0.8;
 df=7;

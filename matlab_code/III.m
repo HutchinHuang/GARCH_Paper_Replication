@@ -1,4 +1,5 @@
 % Main Programme to Get Table III.
+clear
 df=7;
 omega0=0.1;
 alpha0=0.5;
